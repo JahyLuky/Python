@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "blue", "id": 17153, "label": 17153, "shape": "dot", "size": 10, "title": "17153\nVrazi 300 lid\u00ed. Cht\u011bli rozpoutat 3 sv\u011btovou v\u00e1lku sest\u0159elen\u00edm Putinova letadla?", "type_": "mail"}, {"color": "orange", "id": "ireporter.cz", "label": "ireporter.cz", "shape": "dot", "size": 10, "title": "ireporter.cz", "type_": "source"}, {"color": "blue", "id": 18477, "label": 18477, "shape": "dot", "size": 10, "title": "17153\nVrazi 300 lid\u00ed. Cht\u011bli rozpoutat 3 sv\u011btovou v\u00e1lku sest\u0159elen\u00edm Putinova letadla?\u010cernochov\u00e1 co ty na to? Vrazi 300 lid\u00ed. Cht\u011bli rozpoutat 3 sv\u011btovou v\u00e1lku sest\u0159elen\u00edm Putinova letadla?", "type_": "mail"}, {"color": "blue", "id": 18391, "label": 18391, "shape": "dot", "size": 10, "title": "17153\nVrazi 300 lid\u00ed. Cht\u011bli rozpoutat 3 sv\u011btovou v\u00e1lku sest\u0159elen\u00edm Putinova letadla?SU-25 SU-25", "type_": "mail"}, {"color": "blue", "id": 18348, "label": 18348, "shape": "dot", "size": 10, "title": "17153\nVrazi 300 lid\u00ed. Cht\u011bli rozpoutat 3 sv\u011btovou v\u00e1lku sest\u0159elen\u00edm Putinova letadla?A je to !!!", "type_": "mail"}, {"color": "blue", "id": 18198, "label": 18198, "shape": "dot", "size": 10, "title": "17153\nVrazi 300 lid\u00ed. Cht\u011bli rozpoutat 3 sv\u011btovou v\u00e1lku sest\u0159elen\u00edm Putinova letadla?A je to !!!", "type_": "mail"}, {"color": "blue", "id": 17926, "label": 17926, "shape": "dot", "size": 10, "title": "17926\nPolicejn\u00ed prezident - spr\u00e1vn\u00fd \u010dlov\u011bk na spr\u00e1vn\u00e9m m\u00edst\u011b....??", "type_": "mail"}, {"color": "blue", "id": 19613, "label": 19613, "shape": "dot", "size": 10, "title": "17926\nPolicejn\u00ed prezident - spr\u00e1vn\u00fd \u010dlov\u011bk na spr\u00e1vn\u00e9m m\u00edst\u011b....??MEGAODM\u011aNY za \"p\u0159\u00e1telstv\u00ed\"", "type_": "mail"}, {"color": "blue", "id": 12039, "label": 12039, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!D\u016fle\u017eit\u00e9!!! z toho mraz\u00ed j", "type_": "mail"}, {"color": "blue", "id": 14107, "label": 14107, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!Unikl\u00fd projev gener\u00e1ln\u00edho tajemn\u00edka Trilater\u00e1ln\u00ed komise, ze kter\u00e9ho mraz\u00ed!!", "type_": "mail"}, {"color": "blue", "id": 13355, "label": 13355, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!Unikl\u00fd projev gener\u00e1ln\u00edho tajemn\u00edka Trilater\u00e1ln\u00ed komise, ze kter\u00e9ho mraz\u00ed!!", "type_": "mail"}, {"color": "blue", "id": 13171, "label": 13171, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!Projev gener\u00e1ln\u00edho tajemn\u00edka v EU, z kter\u00e9ho mraz\u00ed", "type_": "mail"}, {"color": "blue", "id": 13143, "label": 13143, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!D\u016fle\u017eit\u00e1 informace...", "type_": "mail"}, {"color": "blue", "id": 8621, "label": 8621, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!", "type_": "mail"}, {"color": "blue", "id": 9441, "label": 9441, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!Velice z\u00e1va\u017en\u00e9 a d\u016fle\u017eit\u00e9 Projev gener\u00e1ln\u00edho tajemn\u00edka v EU, z kter\u00e9ho mraz\u00ed", "type_": "mail"}, {"color": "blue", "id": 9584, "label": 9584, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!Velice z\u00e1va\u017en\u00e9 a d\u016fle\u017eit\u00e9 Projev gener\u00e1ln\u00edho tajemn\u00edka v EU, z kter\u00e9ho mraz\u00ed", "type_": "mail"}, {"color": "blue", "id": 9705, "label": 9705, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!Velice z\u00e1va\u017en\u00e9 a d\u016fle\u017eit\u00e9 : Projev gener\u00e1ln\u00edho tajemn\u00edka v EU, z kter\u00e9ho mraz\u00ed", "type_": "mail"}, {"color": "blue", "id": 9851, "label": 9851, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!unikl\u00fd projev gener\u00e1ln\u00edho tajemn\u00edka Trilater\u00e1ln\u00ed komise z 12/20 v Bruselu", "type_": "mail"}, {"color": "blue", "id": 9865, "label": 9865, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!Velice z\u00e1va\u017en\u00e9 a d\u016fle\u017eit\u00e9 Projev gener\u00e1ln\u00edho tajemn\u00edka v EU, asi je j\u00edm JEPPE TRANHOLM-MIKKELSEN", "type_": "mail"}, {"color": "blue", "id": 10172, "label": 10172, "shape": "dot", "size": 10, "title": "8621\nProjev gener\u00e1ln\u00edho tajemn\u00edka\"Trilater\u00e1rn\u00ed komise\"...jestli je to pravda, tak... !!!Projev gener\u00e1ln\u00edho tajemn\u00edka v EU, z kter\u00e9ho mraz\u00ed", "type_": "mail"}, {"color": "blue", "id": 16194, "label": 16194, "shape": "dot", "size": 10, "title": "9569\nCik\u00e1ni v Jablonci pod veden\u00edm PIR\u00c1T\u016e dos\u00e1hli nemo\u017en\u00e9ho!Cik\u00e1ni v Jablonci pod veden\u00edm PIR\u00c1T\u016e dos\u00e1hli nemo\u017en\u00e9ho!", "type_": "mail"}, {"color": "blue", "id": 10963, "label": 10963, "shape": "dot", "size": 10, "title": "9569\nCik\u00e1ni v Jablonci pod veden\u00edm PIR\u00c1T\u016e dos\u00e1hli nemo\u017en\u00e9ho!Cik\u00e1ni v Jablonci pod veden\u00edm PIR\u00c1T\u016e dos\u00e1hli nemo\u017en\u00e9ho!", "type_": "mail"}, {"color": "blue", "id": 9569, "label": 9569, "shape": "dot", "size": 10, "title": "9569\nCik\u00e1ni v Jablonci pod veden\u00edm PIR\u00c1T\u016e dos\u00e1hli nemo\u017en\u00e9ho!", "type_": "mail"}]);
+                  edges = new vis.DataSet([{"color": "orange", "from": 17153, "to": "ireporter.cz", "type_": "source", "width": 1}, {"color": "blue", "from": 17153, "label": 93, "sim": 1.0, "title": 93, "to": 18477, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 17153, "label": 90, "sim": 1.0, "title": 90, "to": 18391, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 17153, "label": 88, "sim": 1.0, "title": 88, "to": 18348, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 17153, "label": 81, "sim": 1.0, "title": 81, "to": 18198, "type_": "similar", "width": 1.0}, {"color": "orange", "from": 17926, "to": "ireporter.cz", "type_": "source", "width": 1}, {"color": "blue", "from": 17926, "label": 118, "sim": 1.0, "title": 118, "to": 19613, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 12039, "label": 98, "sim": 1.0, "title": 98, "to": 14107, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 12039, "label": 49, "sim": 1.0, "title": 49, "to": 13355, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 12039, "label": 43, "sim": 1.0, "title": 43, "to": 13171, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 12039, "label": 43, "sim": 1.0, "title": 43, "to": 13143, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 12039, "label": 241, "sim": 0.8181818181818182, "title": 241, "to": 8621, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 12039, "label": 185, "sim": 0.8181818181818182, "title": 185, "to": 9441, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 12039, "label": 176, "sim": 0.9090909090909091, "title": 176, "to": 9584, "type_": "similar", "width": 0.9090909090909091}, {"color": "blue", "from": 12039, "label": 169, "sim": 1.0, "title": 169, "to": 9705, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 12039, "label": 167, "sim": 0.0, "title": 167, "to": 9851, "type_": "similar", "width": 0.0}, {"color": "blue", "from": 12039, "label": 166, "sim": 0.7857142857142857, "title": 166, "to": 9865, "type_": "similar", "width": 0.7857142857142857}, {"color": "blue", "from": 12039, "label": 152, "sim": 1.0, "title": 152, "to": 10172, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 9865, "label": 264, "sim": 0.7857142857142857, "title": 264, "to": 14107, "type_": "similar", "width": 0.7857142857142857}, {"color": "blue", "from": 9865, "label": 214, "sim": 0.7857142857142857, "title": 214, "to": 13355, "type_": "similar", "width": 0.7857142857142857}, {"color": "blue", "from": 9865, "label": 208, "sim": 0.7857142857142857, "title": 208, "to": 13171, "type_": "similar", "width": 0.7857142857142857}, {"color": "blue", "from": 9865, "label": 209, "sim": 0.7857142857142857, "title": 209, "to": 13143, "type_": "similar", "width": 0.7857142857142857}, {"color": "blue", "from": 9865, "label": 15, "sim": 0.7857142857142857, "title": 15, "to": 10172, "type_": "similar", "width": 0.7857142857142857}, {"color": "blue", "from": 9865, "label": 75, "sim": 0.6428571428571429, "title": 75, "to": 8621, "type_": "similar", "width": 0.6428571428571429}, {"color": "blue", "from": 9865, "label": 19, "sim": 0.6428571428571429, "title": 19, "to": 9441, "type_": "similar", "width": 0.6428571428571429}, {"color": "blue", "from": 9865, "label": 10, "sim": 0.7142857142857143, "title": 10, "to": 9584, "type_": "similar", "width": 0.7142857142857143}, {"color": "blue", "from": 9865, "label": 4, "sim": 0.7857142857142857, "title": 4, "to": 9705, "type_": "similar", "width": 0.7857142857142857}, {"color": "blue", "from": 9865, "label": 2, "sim": 0.0, "title": 2, "to": 9851, "type_": "similar", "width": 0.0}, {"color": "orange", "from": 18198, "to": "ireporter.cz", "type_": "source", "width": 1}, {"color": "blue", "from": 18198, "label": 12, "sim": 1.0, "title": 12, "to": 18477, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 18198, "label": 9, "sim": 1.0, "title": 9, "to": 18391, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 18198, "label": 8, "sim": 1.0, "title": 8, "to": 18348, "type_": "similar", "width": 1.0}, {"color": "orange", "from": 14107, "to": "ireporter.cz", "type_": "source", "width": 1}, {"color": "blue", "from": 14107, "label": 338, "sim": 0.8181818181818182, "title": 338, "to": 8621, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 14107, "label": 282, "sim": 0.8181818181818182, "title": 282, "to": 9441, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 14107, "label": 273, "sim": 0.9090909090909091, "title": 273, "to": 9584, "type_": "similar", "width": 0.9090909090909091}, {"color": "blue", "from": 14107, "label": 267, "sim": 1.0, "title": 267, "to": 9705, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 14107, "label": 265, "sim": 0.0, "title": 265, "to": 9851, "type_": "similar", "width": 0.0}, {"color": "blue", "from": 14107, "label": 249, "sim": 1.0, "title": 249, "to": 10172, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 14107, "label": 55, "sim": 1.0, "title": 55, "to": 13143, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 14107, "label": 56, "sim": 1.0, "title": 56, "to": 13171, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 14107, "label": 50, "sim": 1.0, "title": 50, "to": 13355, "type_": "similar", "width": 1.0}, {"color": "orange", "from": 19613, "to": "ireporter.cz", "type_": "source", "width": 1}, {"color": "orange", "from": 13355, "to": "ireporter.cz", "type_": "source", "width": 1}, {"color": "blue", "from": 13355, "label": 289, "sim": 0.8181818181818182, "title": 289, "to": 8621, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 13355, "label": 233, "sim": 0.8181818181818182, "title": 233, "to": 9441, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 13355, "label": 224, "sim": 0.9090909090909091, "title": 224, "to": 9584, "type_": "similar", "width": 0.9090909090909091}, {"color": "blue", "from": 13355, "label": 218, "sim": 1.0, "title": 218, "to": 9705, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 13355, "label": 216, "sim": 0.0, "title": 216, "to": 9851, "type_": "similar", "width": 0.0}, {"color": "blue", "from": 13355, "label": 200, "sim": 1.0, "title": 200, "to": 10172, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 13355, "label": 6, "sim": 1.0, "title": 6, "to": 13143, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 13355, "label": 7, "sim": 1.0, "title": 7, "to": 13171, "type_": "similar", "width": 1.0}, {"color": "orange", "from": 18348, "to": "ireporter.cz", "type_": "source", "width": 1}, {"color": "blue", "from": 18348, "label": 5, "sim": 1.0, "title": 5, "to": 18477, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 18348, "label": 2, "sim": 1.0, "title": 2, "to": 18391, "type_": "similar", "width": 1.0}, {"color": "orange", "from": 18477, "to": "ireporter.cz", "type_": "source", "width": 1}, {"color": "blue", "from": 18477, "label": 4, "sim": 1.0, "title": 4, "to": 18391, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 8621, "label": 283, "sim": 0.8181818181818182, "title": 283, "to": 13171, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 8621, "label": 283, "sim": 0.8181818181818182, "title": 283, "to": 13143, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 8621, "label": 89, "sim": 0.8181818181818182, "title": 89, "to": 10172, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 8621, "label": 74, "sim": 0.0, "title": 74, "to": 9851, "type_": "similar", "width": 0.0}, {"color": "blue", "from": 8621, "label": 72, "sim": 0.8181818181818182, "title": 72, "to": 9705, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 8621, "label": 65, "sim": 0.9, "title": 65, "to": 9584, "type_": "similar", "width": 0.9}, {"color": "blue", "from": 8621, "label": 56, "sim": 1.0, "title": 56, "to": 9441, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 10172, "label": 194, "sim": 1.0, "title": 194, "to": 13171, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 10172, "label": 195, "sim": 1.0, "title": 195, "to": 13143, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 10172, "label": 34, "sim": 0.8181818181818182, "title": 34, "to": 9441, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 10172, "label": 24, "sim": 0.9090909090909091, "title": 24, "to": 9584, "type_": "similar", "width": 0.9090909090909091}, {"color": "blue", "from": 10172, "label": 18, "sim": 1.0, "title": 18, "to": 9705, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 10172, "label": 16, "sim": 0.0, "title": 16, "to": 9851, "type_": "similar", "width": 0.0}, {"color": "orange", "from": "ireporter.cz", "to": 18391, "type_": "source", "width": 1}, {"color": "orange", "from": "ireporter.cz", "to": 16194, "type_": "source", "width": 1}, {"color": "orange", "from": "ireporter.cz", "to": 10963, "type_": "source", "width": 1}, {"color": "blue", "from": 16194, "label": 321, "sim": 0.0, "title": 321, "to": 9569, "type_": "similar", "width": 0.0}, {"color": "blue", "from": 16194, "label": 235, "sim": 0.0, "title": 235, "to": 10963, "type_": "similar", "width": 0.0}, {"color": "blue", "from": 10963, "label": 86, "sim": 1.0, "title": 86, "to": 9569, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 13143, "label": 0, "sim": 1.0, "title": 0, "to": 13171, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 13143, "label": 228, "sim": 0.8181818181818182, "title": 228, "to": 9441, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 13143, "label": 218, "sim": 0.9090909090909091, "title": 218, "to": 9584, "type_": "similar", "width": 0.9090909090909091}, {"color": "blue", "from": 13143, "label": 212, "sim": 1.0, "title": 212, "to": 9705, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 13143, "label": 210, "sim": 0.0, "title": 210, "to": 9851, "type_": "similar", "width": 0.0}, {"color": "blue", "from": 9441, "label": 227, "sim": 0.8181818181818182, "title": 227, "to": 13171, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 9441, "label": 18, "sim": 0.0, "title": 18, "to": 9851, "type_": "similar", "width": 0.0}, {"color": "blue", "from": 9441, "label": 16, "sim": 0.8181818181818182, "title": 16, "to": 9705, "type_": "similar", "width": 0.8181818181818182}, {"color": "blue", "from": 9441, "label": 10, "sim": 0.9, "title": 10, "to": 9584, "type_": "similar", "width": 0.9}, {"color": "blue", "from": 9705, "label": 212, "sim": 1.0, "title": 212, "to": 13171, "type_": "similar", "width": 1.0}, {"color": "blue", "from": 9705, "label": 3, "sim": 0.0, "title": 3, "to": 9851, "type_": "similar", "width": 0.0}, {"color": "blue", "from": 9705, "label": 7, "sim": 0.9090909090909091, "title": 7, "to": 9584, "type_": "similar", "width": 0.9090909090909091}, {"color": "blue", "from": 9584, "label": 218, "sim": 0.9090909090909091, "title": 218, "to": 13171, "type_": "similar", "width": 0.9090909090909091}, {"color": "blue", "from": 9584, "label": 9, "sim": 0.0, "title": 9, "to": 9851, "type_": "similar", "width": 0.0}, {"color": "blue", "from": 13171, "label": 209, "sim": 0.0, "title": 209, "to": 9851, "type_": "similar", "width": 0.0}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": true,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": false,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

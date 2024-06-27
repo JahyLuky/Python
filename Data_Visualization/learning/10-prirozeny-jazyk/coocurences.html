@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "Rusko", "label": "Rusko", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "Ukrajina", "label": "Ukrajina", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "USA", "label": "USA", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "Z\u00e1pad", "label": "Z\u00e1pad", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "NATO", "label": "NATO", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "Vladimir Vladimirovi\u010d Putin", "label": "Vladimir Vladimirovi\u010d Putin", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "politika \u010desk\u00e1", "label": "politika \u010desk\u00e1", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "N\u011bmecko", "label": "N\u011bmecko", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "EU", "label": "EU", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "Evropsk\u00e1 unie", "label": "Evropsk\u00e1 unie", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "uprchl\u00edci", "label": "uprchl\u00edci", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "Petr Fiala", "label": "Petr Fiala", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "vl\u00e1da", "label": "vl\u00e1da", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "Pir\u00e1ti", "label": "Pir\u00e1ti", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "Andrej Babi\u0161", "label": "Andrej Babi\u0161", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "\u010desk\u00e1 vl\u00e1da", "label": "\u010desk\u00e1 vl\u00e1da", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "ODS", "label": "ODS", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "Mark\u00e9ta Pekarov\u00e1 Adamov\u00e1", "label": "Mark\u00e9ta Pekarov\u00e1 Adamov\u00e1", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "TOP 09", "label": "TOP 09", "shape": "dot", "size": 10}, {"color": "#97c2fc", "id": "KDU-\u010cSL", "label": "KDU-\u010cSL", "shape": "dot", "size": 10}]);
+                  edges = new vis.DataSet([{"from": "Rusko", "title": 2353, "to": "Ukrajina", "value": 2353}, {"from": "Rusko", "title": 2330, "to": "USA", "value": 2330}, {"from": "Rusko", "title": 1321, "to": "Z\u00e1pad", "value": 1321}, {"from": "Rusko", "title": 970, "to": "NATO", "value": 970}, {"from": "Rusko", "title": 894, "to": "Vladimir Vladimirovi\u010d Putin", "value": 894}, {"from": "Rusko", "title": 875, "to": "politika \u010desk\u00e1", "value": 875}, {"from": "Rusko", "title": 848, "to": "N\u011bmecko", "value": 848}, {"from": "Rusko", "title": 820, "to": "EU", "value": 820}, {"from": "Rusko", "title": 757, "to": "Evropsk\u00e1 unie", "value": 757}, {"from": "Ukrajina", "title": 1697, "to": "USA", "value": 1697}, {"from": "Ukrajina", "title": 844, "to": "uprchl\u00edci", "value": 844}, {"from": "Ukrajina", "title": 805, "to": "NATO", "value": 805}, {"from": "Ukrajina", "title": 798, "to": "Z\u00e1pad", "value": 798}, {"from": "Ukrajina", "title": 769, "to": "politika \u010desk\u00e1", "value": 769}, {"from": "USA", "title": 906, "to": "Z\u00e1pad", "value": 906}, {"from": "USA", "title": 830, "to": "NATO", "value": 830}, {"from": "USA", "title": 664, "to": "Evropsk\u00e1 unie", "value": 664}, {"from": "EU", "title": 1695, "to": "Evropsk\u00e1 unie", "value": 1695}, {"from": "Evropsk\u00e1 unie", "title": 922, "to": "politika \u010desk\u00e1", "value": 922}, {"from": "Petr Fiala", "title": 1523, "to": "politika \u010desk\u00e1", "value": 1523}, {"from": "Petr Fiala", "title": 724, "to": "vl\u00e1da", "value": 724}, {"from": "politika \u010desk\u00e1", "title": 1068, "to": "Pir\u00e1ti", "value": 1068}, {"from": "politika \u010desk\u00e1", "title": 1053, "to": "Andrej Babi\u0161", "value": 1053}, {"from": "politika \u010desk\u00e1", "title": 1008, "to": "\u010desk\u00e1 vl\u00e1da", "value": 1008}, {"from": "politika \u010desk\u00e1", "title": 830, "to": "ODS", "value": 830}, {"from": "politika \u010desk\u00e1", "title": 708, "to": "Mark\u00e9ta Pekarov\u00e1 Adamov\u00e1", "value": 708}, {"from": "politika \u010desk\u00e1", "title": 665, "to": "TOP 09", "value": 665}, {"from": "Pir\u00e1ti", "title": 835, "to": "TOP 09", "value": 835}, {"from": "Pir\u00e1ti", "title": 784, "to": "ODS", "value": 784}, {"from": "\u010desk\u00e1 vl\u00e1da", "title": 998, "to": "vl\u00e1da", "value": 998}, {"from": "ODS", "title": 909, "to": "TOP 09", "value": 909}, {"from": "ODS", "title": 700, "to": "KDU-\u010cSL", "value": 700}, {"from": "TOP 09", "title": 671, "to": "KDU-\u010cSL", "value": 671}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": true,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
