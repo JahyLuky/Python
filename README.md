@@ -9,7 +9,7 @@ This section introduces fundamental machine learning techniques, focusing on reg
 - **Machine_Learning/**: Contains code and projects related to the machine learning course.
 
 ### Repository Link
-- [Machine Learning Repository](link-to-machine-learning-repo)
+- [Machine Learning Repository](https://github.com/JahyLuky/Python/tree/main/Machine_Learning)
 
 ---
 
@@ -22,7 +22,7 @@ Explore the theoretical foundations and practical applications of data visualiza
 - **Data_Visualization/**: Houses code and projects focused on data visualization concepts.
 
 ### Repository Link
-- [Data Visualization Repository](link-to-data-visualization-repo)
+- [Data Visualization Repository](https://github.com/JahyLuky/Python/tree/main/Data_Visualization)
 
 ---
 
