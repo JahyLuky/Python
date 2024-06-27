@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2022-12-07">
+    <creator>NetworkX 2.8.4</creator>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="2" title="distance" type="string" />
+      <attribute id="3" title="relation" type="string" />
+    </attributes>
+    <attributes mode="static" class="node">
+      <attribute id="0" title="type" type="string" />
+      <attribute id="1" title="population" type="long" />
+    </attributes>
+    <nodes>
+      <node id="Czechia" label="Czechia">
+        <attvalues>
+          <attvalue for="0" value="country" />
+        </attvalues>
+      </node>
+      <node id="Prague" label="Prague">
+        <attvalues>
+          <attvalue for="0" value="city" />
+          <attvalue for="1" value="1309000" />
+        </attvalues>
+      </node>
+      <node id="Slovakia" label="Slovakia">
+        <attvalues>
+          <attvalue for="0" value="country" />
+        </attvalues>
+      </node>
+      <node id="Hungary" label="Hungary">
+        <attvalues>
+          <attvalue for="0" value="country" />
+        </attvalues>
+      </node>
+      <node id="Poland" label="Poland">
+        <attvalues>
+          <attvalue for="0" value="country" />
+        </attvalues>
+      </node>
+      <node id="Germany" label="Germany">
+        <attvalues>
+          <attvalue for="0" value="country" />
+        </attvalues>
+      </node>
+      <node id="Austria" label="Austria">
+        <attvalues>
+          <attvalue for="0" value="country" />
+        </attvalues>
+      </node>
+      <node id="Bratislava" label="Bratislava">
+        <attvalues>
+          <attvalue for="0" value="city" />
+        </attvalues>
+      </node>
+      <node id="Budapest" label="Budapest">
+        <attvalues>
+          <attvalue for="0" value="city" />
+        </attvalues>
+      </node>
+      <node id="Warsaw" label="Warsaw">
+        <attvalues>
+          <attvalue for="0" value="city" />
+        </attvalues>
+      </node>
+      <node id="Berlin" label="Berlin">
+        <attvalues>
+          <attvalue for="0" value="city" />
+        </attvalues>
+      </node>
+      <node id="Vienna" label="Vienna">
+        <attvalues>
+          <attvalue for="0" value="city" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="Czechia" target="Prague" id="0" weight="81.0672960287907" type="capital">
+        <attvalues>
+          <attvalue for="2" value="81km" />
+        </attvalues>
+      </edge>
+      <edge source="Czechia" target="Slovakia" id="1" weight="332.2417956173501">
+        <attvalues>
+          <attvalue for="3" value="neighbour" />
+          <attvalue for="2" value="332km" />
+        </attvalues>
+      </edge>
+      <edge source="Czechia" target="Poland" id="2" weight="347.82218390435736">
+        <attvalues>
+          <attvalue for="3" value="neighbour" />
+          <attvalue for="2" value="347km" />
+        </attvalues>
+      </edge>
+      <edge source="Czechia" target="Germany" id="3" weight="385.45747331946063">
+        <attvalues>
+          <attvalue for="3" value="neighbour" />
+          <attvalue for="2" value="385km" />
+        </attvalues>
+      </edge>
+      <edge source="Czechia" target="Austria" id="4" weight="264.7059693698347">
+        <attvalues>
+          <attvalue for="3" value="neighbour" />
+          <attvalue for="2" value="264km" />
+        </attvalues>
+      </edge>
+      <edge source="Slovakia" target="Bratislava" id="5" weight="197.2033342697801" type="capital">
+        <attvalues>
+          <attvalue for="2" value="197km" />
+        </attvalues>
+      </edge>
+      <edge source="Slovakia" target="Hungary" id="6" weight="168.15236185678165">
+        <attvalues>
+          <attvalue for="3" value="neighbour" />
+          <attvalue for="2" value="168km" />
+        </attvalues>
+      </edge>
+      <edge source="Slovakia" target="Poland" id="7" weight="363.56161662509004">
+        <attvalues>
+          <attvalue for="3" value="neighbour" />
+          <attvalue for="2" value="363km" />
+        </attvalues>
+      </edge>
+      <edge source="Hungary" target="Budapest" id="8" weight="44.52372036012399" type="capital">
+        <attvalues>
+          <attvalue for="2" value="44km" />
+        </attvalues>
+      </edge>
+      <edge source="Hungary" target="Austria" id="9" weight="375.2364233234644">
+        <attvalues>
+          <attvalue for="3" value="neighbour" />
+          <attvalue for="2" value="375km" />
+        </attvalues>
+      </edge>
+      <edge source="Poland" target="Warsaw" id="10" weight="136.20017718562985" type="capital">
+        <attvalues>
+          <attvalue for="2" value="136km" />
+        </attvalues>
+      </edge>
+      <edge source="Poland" target="Germany" id="11" weight="606.6522469878292">
+        <attvalues>
+          <attvalue for="3" value="neighbour" />
+          <attvalue for="2" value="606km" />
+        </attvalues>
+      </edge>
+      <edge source="Germany" target="Berlin" id="12" weight="251.56413496312288" type="capital">
+        <attvalues>
+          <attvalue for="2" value="251km" />
+        </attvalues>
+      </edge>
+      <edge source="Germany" target="Austria" id="13" weight="502.66753151749884">
+        <attvalues>
+          <attvalue for="3" value="neighbour" />
+          <attvalue for="2" value="502km" />
+        </attvalues>
+      </edge>
+      <edge source="Austria" target="Vienna" id="14" weight="146.19375312687987" type="capital">
+        <attvalues>
+          <attvalue for="2" value="146km" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

@@ -1,0 +1,15 @@
+#/home/lukas/.local/lib/python3.8/site-packages/ipykernel_launcher.py -f /home/lukas/.local/share/jupyter/runtime/kernel-3ee4a60d-9800-432e-b00e-dc87876711bb.json
+# GMT Wed Dec  7 14:58:17 2022
+# 
+Czechia Prague Slovakia Poland Germany Austria
+Prague
+Slovakia Bratislava Hungary Poland
+Hungary Budapest Austria
+Poland Warsaw Germany
+Germany Berlin Austria
+Austria Vienna
+Bratislava
+Budapest
+Warsaw
+Berlin
+Vienna
