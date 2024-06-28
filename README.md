@@ -26,6 +26,19 @@ Explore the theoretical foundations and practical applications of data visualiza
 
 ---
 
+## Robot Navigation Server
+
+### Description
+The Robot Navigation Server project involves creating a server that authenticates and navigates multiple remote robots to the center of a coordinate system. Each robot starts from a random position and attempts to reach the [0,0] coordinate to retrieve a secret message. The server communicates with robots using a specific text-based protocol, handles obstacles, and manages various error scenarios.
+
+### Folder Contents
+- **robot_navigation_server/**: Contains code and documentation for the robot navigation server project.
+
+### Repository Link
+- [Robot Navigation Server Repository](https://github.com/JahyLuky/Python/tree/main/Robot_Navigation_Server)
+
+---
+
 ## About
 This repository showcases my learning journey in machine learning and data visualization. Each section contains practical projects and code examples that demonstrate the application of theoretical concepts.
 
