@@ -40,7 +40,6 @@ The Robot Navigation Server project involves creating a server that authenticate
 ---
 
 ## About
-This repository showcases my learning journey in machine learning and data visualization. Each section contains practical projects and code examples that demonstrate the application of theoretical concepts.
+This repository showcases my learning journey in machine learning, data visualization, and network programming. Each section contains practical projects and code examples that demonstrate the application of theoretical concepts.
 
 Feel free to explore the individual folders for detailed project descriptions and implementations.
-
