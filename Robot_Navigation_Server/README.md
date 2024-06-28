@@ -27,10 +27,9 @@ The Robot Navigation Server project involves creating a server that can authenti
 ## Project Structure
 
 - `robot_navigation_server/`: Main project folder.
-  - `server.py`: Main server implementation.
-  - `client_simulator.py`: Client simulator for testing.
-  - `keys.py`: Contains key pairs used for authentication.
-  - `utils.py`: Utility functions for hashing and protocol handling.
+  - `main.py`: Main server implementation (server simulation).
+  - `tester`: Client simulator for testing.
+  - `zadani.md`: Project specification with explanation (in czech).
   - `README.md`: Project overview and learnings (this file).
 
 ## Running the Project
