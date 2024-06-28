@@ -39,7 +39,20 @@ The Robot Navigation Server project involves creating a server that authenticate
 
 ---
 
+## Statistical Analysis and Creativity Score
+
+### Description
+This combined project addresses various statistical and probability topics, including observed variables, variability deviations, and parameter estimation for normal, exponential, and uniform distributions. It also involves generating random samples, comparing histograms of simulated values with observed data, and calculating confidence intervals for mean values. Additionally, it evaluates creativity scores based on different types of motivation, implementing algorithms to assess creativity and analyze the influence of various motivational factors on creativity scores.
+
+### Folder Contents
+- **statistical_analysis_and_creativity_score/**: Contains code and documentation for statistical analysis, distribution estimation, and creativity score by motivation.
+
+### Repository Link
+- [Statistical Analysis and Creativity Score Repository](https://github.com/JahyLuky/Python/tree/main/Statistical_Analysis)
+
+---
+
 ## About
-This repository showcases my learning journey in machine learning, data visualization, and network programming. Each section contains practical projects and code examples that demonstrate the application of theoretical concepts.
+This repository showcases my learning journey in machine learning, data visualization, statistical analysis, and creativity evaluation. Each section contains practical projects and code examples that demonstrate the application of theoretical concepts.
 
 Feel free to explore the individual folders for detailed project descriptions and implementations.
