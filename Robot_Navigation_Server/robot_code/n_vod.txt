@@ -1,0 +1,47 @@
+Úkolem je vytvořit server, který komunikuje s klienty pomocí TCP protokolu. 
+V python programu main.py je vše již připravené, zbývá jen naprogramovat vnitřní logiku. 
+Doporučuji udělat stavovou proměnnou state ... program bude jeden velký stavový automat.
+
+Doporučuji používat Linux nebo WSL ... pak se obejdeš bez virtuální mašiny, kterou nám v zadání doporučují.
+
+
+1) Pusť server
+2) Pusť tester
+
+
+
+main.py
+-------
+Tady je připravený template TCP serveru v pythonu - viz komentáře uvnitř
+
+
+Je potřeba mít stažený Python3
+
+Instalace Pythonu3 na Linuxu:
+sudo apt update
+sudo apt install python3
+
+Puštění serveru na Linuxu:
+python3 main.py
+
+
+Instalace Pythonu3 na Windows:
+https://www.python.org/downloads/
+
+Spuštění serveru na Windows:
+python main.py
+
+
+
+
+Tester
+------
+soubor tester je pátá (poslední) verze testeru, kterou nám dali síťaři k dispozici. Není potřeba virtuální mašiny.
+
+ke spuštění testeru stačí napsat:
+
+tester 3999 localhost <jaký test?>
+
+3999 je port, stačí výchozí je 3999
+localhost je náš lokální počítač
+jaký test není nutno specifikovat, ale třeba příkaz tester 3999 localhost 1 provede pouze první test, bez jedničky provede všechny
