@@ -35,7 +35,7 @@ The Robot Navigation Server project involves creating a server that can authenti
 ## Running the Project
 
 1. **Setup**: Ensure Python is installed on your system.
-2. **Start Server**: Run the server using the command `python server.py`.
+2. **Start Server**: Run the server using the command `python main.py`.
 3. **Simulate Clients**: Use the provided client simulator or run the tester to simulate robot clients.
 
 ## Testing
