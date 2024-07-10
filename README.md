@@ -56,3 +56,7 @@ This combined project addresses various statistical and probability topics, incl
 This repository showcases my learning journey in machine learning, data visualization, statistical analysis, and creativity evaluation. Each section contains practical projects and code examples that demonstrate the application of theoretical concepts.
 
 Feel free to explore the individual folders for detailed project descriptions and implementations.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
